@@ -1,0 +1,10 @@
+{
+  "name": "simple-app-devops",
+  "version": "1.0.0",
+  "description": "Simple Node.js app for DevOps task",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {}
+}
