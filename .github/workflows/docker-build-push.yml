@@ -19,7 +19,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: japtoo
-          password: dckr_pat_dv4uTFuf1IsRHbpayKZk9CGdeds
+          password: dckr_pat_BSpiiU5CuF8F0o_H-AgrEfEWUgQ
 
       - name: Build Docker image
         run: |
