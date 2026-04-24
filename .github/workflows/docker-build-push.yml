@@ -2,17 +2,14 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Login to Docker Hub
@@ -21,12 +18,11 @@ jobs:
           username: japtoo
           password: dckr_pat_BSpiiU5CuF8F0o_H-AgrEfEWUgQ
 
-      - name: Build Docker image
-        run: |
-          docker build -t kevin-devops-19:${{ github.sha }} .
-          docker tag kevin-devops-19:${{ github.sha }} kevin-devops-19:latest
-
-      - name: Push to Docker Hub
-        run: |
-          docker push kevin-devops-19:${{ github.sha }}
-          docker push kevin-devops-19:latest
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            japtoo/kevin-devops-19:latest
+            japtoo/kevin-devops-19:${{ github.sha }}
